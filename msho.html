@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="icon.png">
+  <title>⋆❅*𖢔𐂂꙳</title>
+
+  <!-- Google Fonts Import: Shantell Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #002f4b, #009990);
+      color: white;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Background Image Styling (hidden by default) */
+    .background-image {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right:0;
+      width: 100%;
+      height: 40%;
+      background: url('image.jpg') no-repeat center bottom;
+      background-size: cover;
+      mask-image: linear-gradient(to top, black, transparent);
+      -webkit-mask-image: linear-gradient(to top, black, transparent);
+      z-index: -1; /* Places the image behind the content */
+      opacity: 0; /* Initially hidden */
+      transition: opacity 1s ease; /* Smooth fade-in effect */
+    }
+
+    .background-image.show {
+      opacity: 1; /* Show the image when the class is added */
+    }
+
+    .gift-box {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background: #FA4032;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.5s ease;
+    }
+
+    .gift-box .lid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #FA4035;
+      border-radius: 10px 10px 0 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow added here */
+    }
+
+    .gift-box .ribbon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 100%;
+      background: #ffffff;
+      transform: translate(-50%, -50%);
+    }
+
+    .gift-box .lid .ribbon-top {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: #ffffff;
+      transform: translateY(-50%);
+    }
+
+    /* Butterfly ribbon image */
+    .gift-box .butterfly-ribbon {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 100px;
+      background: url('butterfly-ribbon.png') no-repeat center;
+      background-size: contain;
+      z-index: 100;
+    }
+
+    .message {
+      font-size: 1.5rem;
+      text-align: center;
+      display: none;
+      opacity: 0;
+      animation: popOut 0.5s ease forwards;
+      font-family: 'Shantell Sans', cursive; /* Apply Shantell Sans */
+      font-weight: 700; /* Bold weight */
+    }
+
+    @keyframes popOut {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      font-size: 1.5rem;
+      color: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    /* Click Me Text Styling */
+    .click-me {
+      margin-top: 30px;
+      font-size: 1.0rem;
+      font-weight: bold;
+      color: #B7E0FF;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      animation: pulse 1.5s infinite;
+      cursor: pointer;
+      font-family: 'Shantell Sans', cursive; /* Apply Shantell Sans */
+      font-weight: 500; /* Medium weight */
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hidden Background Image -->
+  <div class="background-image" id="backgroundImage"></div>
+
+  <div class="gift-box" id="giftBox">
+    <div class="lid" id="lid">
+      <div class="ribbon-top"></div>
+      <div class="butterfly-ribbon"></div>
+    </div>
+    <div class="ribbon"></div>
+  </div>
+  <div class="click-me" id="clickMe">Click Me !!</div> <!-- Added Click Me Text -->
+  <div class="message" id="message">
+    <p style="font-size: 2.0rem;">Ms Ho~</p>
+    <br>
+    <h2 style="font-size: 1.7rem;" >🎄 Merry Christmas! 🎅</h2>
+    <br>
+    <p style="font-size: 0.8rem;">We wish you a merry christmas  ⋆｡♪ <br>we wish you a merry christmas ₊˚♬ ﾟ.</p>
+    <p style="font-size: 0.8rem;">we wish you a merry christmas  ✩°｡ <br>ANDDDD a happy happy happy new year!  ⨾𓍢ִ໋</p>
+    <br>
+    <p style="font-size: 1.0rem;">May this festive season bring you joy and peace~</p>
+    <p style="font-size: 1.0rem;">Take this time to rest, recharge, and make beautiful memories🌅</p>
+    <p style="font-size: 1.0rem;">Merry everything and happy always! ❤️</p>
+    <br>
+    <p style="font-size: 0.9rem;">-- Maya & Nara</p>
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <!-- Snowflakes -->
+  <script>
+    const createSnowflake = () => {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+      snowflake.innerHTML = '❄';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    };
+
+    setInterval(createSnowflake, 200);
+
+    // Unbox the gift by removing the lid and showing the message
+    const giftBox = document.getElementById('giftBox');
+    const lid = document.getElementById('lid');
+    const message = document.getElementById('message');
+    const clickMe = document.getElementById('clickMe');
+    const backgroundImage = document.getElementById('backgroundImage');
+
+    giftBox.addEventListener('click', () => {
+      // Slide the lid off
+      lid.style.transform = 'translateY(-200%)';
+      lid.style.transition = 'transform 0.8s ease';
+
+      // Fade out the gift box
+      setTimeout(() => {
+        giftBox.style.opacity = '0';
+      }, 800);
+
+      // Remove the gift box completely after the fade-out
+      setTimeout(() => {
+        giftBox.style.display = 'none';
+      }, 1300);
+
+      // Show the message after the lid animation
+      setTimeout(() => {
+        message.style.display = 'block';
+        message.style.animation = 'popOut 0.5s ease forwards';
+      }, 800);
+
+      // Show the background image
+      backgroundImage.classList.add('show');
+
+      // Hide the "Click Me" text
+      clickMe.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
